@@ -11,6 +11,7 @@ def add_statistic():
     cs = request.form.get("current_streak")
     hs = int(request.form.get("high_score"))
     cb = request.form.get("current_bets")
+    bi = request.form.get("bot_id")
 
     global high_score, total_bets
     
@@ -19,11 +20,14 @@ def add_statistic():
     if hs > high_score:
         high_score = hs
 
-    log_info(cs, hs, cb)
+    log_info(bi, cs, hs, cb)
 
     return "result logged"
 
-def log_info(cs, hs, cb):
+def log_info(bi, cs, hs, cb):
+    print("=============")
+    print(f"BOT {bi}")
+    print("=============")
     print("--------------------------")
     print(f"Bot made new bet")
     print(f"Its streak: {cs}")
@@ -33,4 +37,20 @@ def log_info(cs, hs, cb):
     print("--------------------------")
 
 if __name__ == "__main__":
+
+    art = """
+
+ /$$$$$$$   /$$$$$$  /$$   /$$ /$$$$$$$   /$$$$$$  /$$$$$$$$       /$$$$$$  /$$       /$$$$$$
+| $$__  $$ /$$__  $$| $$  | $$| $$__  $$ /$$__  $$|__  $$__/      /$$__  $$| $$      |_  $$_/
+| $$  \ $$| $$  \__/| $$  | $$| $$  \ $$| $$  \ $$   | $$        | $$  \__/| $$        | $$  
+| $$$$$$$ | $$      | $$$$$$$$| $$$$$$$ | $$  | $$   | $$ /$$$$$$| $$      | $$        | $$  
+| $$__  $$| $$      | $$__  $$| $$__  $$| $$  | $$   | $$|______/| $$      | $$        | $$  
+| $$  \ $$| $$    $$| $$  | $$| $$  \ $$| $$  | $$   | $$        | $$    $$| $$        | $$  
+| $$$$$$$/|  $$$$$$/| $$  | $$| $$$$$$$/|  $$$$$$/   | $$        |  $$$$$$/| $$$$$$$$ /$$$$$$
+|_______/  \______/ |__/  |__/|_______/  \______/    |__/         \______/ |________/|______/
+                                                                                               
+"""
+
+    print(art)
+
     app.run()
