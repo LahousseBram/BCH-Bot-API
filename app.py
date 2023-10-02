@@ -1,10 +1,13 @@
 from flask import Flask, request
+import datetime
 
 app = Flask(__name__)
 
 # Initialize global variables
 high_score = 0
 total_bets = 0
+
+start_time = datetime.now()
 
 @app.route("/add-statistic", methods=['POST'])
 def add_statistic():
@@ -27,6 +30,7 @@ def add_statistic():
 def log_info(bi, cs, hs, cb):
     print("=============")
     print(f"BOT {bi}")
+    print(f"Elapsed: {datetime.now() - start_time}")
     print("=============")
     print("--------------------------")
     print(f"Bot made new bet")
